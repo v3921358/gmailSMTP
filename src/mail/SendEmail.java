@@ -3,9 +3,13 @@ package mail;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 
 /**
  *
@@ -39,7 +43,7 @@ public class SendEmail {
         }
         addressList = addressList.substring(0, addressList.length() - 1);
         Session session = Session.getInstance(SSLProp,
-                new javax.mail.Authenticator() {
+                new jakarta.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
@@ -64,7 +68,7 @@ public class SendEmail {
         }
         addressList = addressList.substring(0, addressList.length() - 1);
         Session session = Session.getInstance(TLSProp,
-                new javax.mail.Authenticator() {
+                new jakarta.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
